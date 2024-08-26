@@ -20,7 +20,8 @@ app.use(session({
   
 const port = process.env.PORT||3000
 app.use(express.urlencoded({extended:true}))
-app.use('/public',express.static('public'))
+app.use('/public',express.static(path.join(path.resolve(),'public')))
+app.set('views',path.resolve(),'/views')
 app.set('view engine',"ejs")
 bootstrab(app)
 app.listen(port, () => console.log(`server listening on port ${port}...`))
